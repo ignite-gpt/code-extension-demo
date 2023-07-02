@@ -11,30 +11,40 @@ export function activate(context: vscode.ExtensionContext) {
     'Congratulations, your extension "code-extension-demo" is now active!'
   );
 
-  // The command has been defined in the package.json file
-  // Now provide the implementation of the command with registerCommand
-  // The commandId parameter must match the command field in package.json
-  let disposable = vscode.commands.registerCommand(
-    "code-extension-demo.helloWorld",
-    () => {
+  let subscriptions = [
+    // The command has been defined in the package.json file
+    // Now provide the implementation of the command with registerCommand
+    // The commandId parameter must match the command field in package.json
+    vscode.commands.registerCommand("code-extension-demo.helloWorld", () => {
       // The code you place here will be executed every time your command is executed
       // Display a message box to the user
       vscode.window.showInformationMessage(
         "Hello World from code-extension-demo!"
       );
+    }),
 
-      // get contents of current file
-      const editor = vscode.window.activeTextEditor;
-      if (editor) {
-        const document = editor.document;
-        const selection = editor.selection;
-        const text = document.getText(selection);
-        vscode.window.showInformationMessage(text);
-      }
-    }
-  );
+    vscode.window.onDidChangeActiveTextEditor((e) => {
+      console.log("onDidChangeActiveTextEditor", e);
+    }),
 
-  context.subscriptions.push(disposable);
+    vscode.window.onDidChangeTextEditorSelection((e) => {
+      console.log("onDidChangeTextEditorSelection", e);
+    }),
+
+    vscode.window.onDidChangeActiveNotebookEditor((e) => {
+      console.log("onDidChangeActiveNotebookEditor", e);
+    }),
+
+    vscode.window.onDidChangeNotebookEditorSelection((e) => {
+      console.log("onDidChangeNotebookEditorSelection", e);
+    }),
+
+    vscode.window.onDidChangeWindowState((e) => {
+      console.log("onDidChangeWindowState", e);
+    }),
+  ];
+
+  context.subscriptions.push(...subscriptions);
 }
 
 // This method is called when your extension is deactivated
