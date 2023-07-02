@@ -13,3 +13,7 @@ vsce package
 ```
 
 Next, open the VS Code Extension Manager and choose "Install from VSIX..." from the menu and select the generated VSIX file.
+
+## Usage
+
+Run the command with command palette (Ctrl+Shift+P or Cmd+Shift+P on Mac) and type `Hello World`.
