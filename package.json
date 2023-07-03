@@ -1,6 +1,7 @@
 {
   "name": "code-extension-demo",
   "displayName": "code-extension-demo",
+  "repository": "https://github.com/ignite-gpt/code-extension-demo",
   "description": "",
   "version": "0.0.1",
   "engines": {
