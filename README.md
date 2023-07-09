@@ -1,5 +1,13 @@
 # Getting started
 
+## Prerequisites
+
+```sh
+cp .env.example .env
+```
+
+then add your api key to the .env file
+
 ## Install
 
 ```sh
