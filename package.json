@@ -1,7 +1,7 @@
 {
-  "name": "code-extension-demo",
-  "displayName": "code-extension-demo",
-  "repository": "https://github.com/ignite-gpt/code-extension-demo",
+  "name": "ignite-code-extension",
+  "displayName": "ignite-code-extension",
+  "repository": "https://github.com/ignite-gpt/ignite-code-extension",
   "description": "",
   "version": "0.0.1",
   "engines": {
@@ -15,8 +15,8 @@
   "contributes": {
     "commands": [
       {
-        "command": "code-extension-demo.helloWorld",
-        "title": "Hello World"
+        "command": "ignite-code-extension.helloWorld",
+        "title": "Ignite asdf"
       }
     ]
   },
@@ -29,22 +29,27 @@
     "watch-tests": "tsc -p . -w --outDir out",
     "pretest": "npm run compile-tests && npm run compile && npm run lint",
     "lint": "eslint src --ext ts",
-    "test": "node ./out/test/runTest.js"
+    "test": "node ./out/test/runTest.js",
+    "build": "vsce package",
+    "install": "code --install-extension ignite-code-extension-0.0.1.vsix"
   },
   "devDependencies": {
-    "@types/vscode": "^1.79.0",
     "@types/glob": "^8.1.0",
     "@types/mocha": "^10.0.1",
     "@types/node": "20.2.5",
+    "@types/vscode": "^1.79.0",
     "@typescript-eslint/eslint-plugin": "^5.59.8",
     "@typescript-eslint/parser": "^5.59.8",
+    "@vscode/test-electron": "^2.3.2",
     "eslint": "^8.41.0",
     "glob": "^8.1.0",
     "mocha": "^10.2.0",
-    "typescript": "^5.1.3",
     "ts-loader": "^9.4.3",
+    "typescript": "^5.1.3",
     "webpack": "^5.85.0",
-    "webpack-cli": "^5.1.1",
-    "@vscode/test-electron": "^2.3.2"
+    "webpack-cli": "^5.1.1"
+  },
+  "dependencies": {
+    "openai": "^3.3.0"
   }
 }
