@@ -8,6 +8,22 @@ cp .env.example .env
 
 then add your api key to the .env file
 
+## Recommended
+
+```sh
+nvm install
+```
+
+```sh
+nvm use
+```
+
+### optional
+
+```sh
+nvm alias default
+```
+
 ## Install
 
 ```sh
