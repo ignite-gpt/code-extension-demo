@@ -16,7 +16,7 @@
     "commands": [
       {
         "command": "ignite-code-extension.helloWorld",
-        "title": "Ignite asdf"
+        "title": "Ignite Hello World"
       }
     ]
   },

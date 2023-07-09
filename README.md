@@ -21,3 +21,7 @@ npm run install:extension
 ```
 
 Next, open the VS Code Extension Manager and choose "Install from VSIX..." from the menu and select the generated VSIX file.
+
+## Usage
+
+Open the command pallette with `Ctrl+Shift+P` and type `Hello World` to see the output.
