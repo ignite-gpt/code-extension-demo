@@ -12,13 +12,16 @@ const replaceTextAtCursor = async (text: string) => {
     return;
   }
 
-  editor.edit((editBuilder) => {
-    const cursor = editor.selection.active;
-    if (!cursor) {
-      return;
-    }
+  const selection = editor.selection;
 
-    editBuilder.replace(editor.selection.active, text);
+  editor.edit((editBuilder) => {
+    if (selection.isEmpty) {
+      // if there's no selection, insert at cursor position
+      editBuilder.insert(selection.start, text);
+    } else {
+      // if there's a selection, replace it
+      editBuilder.replace(selection, text);
+    }
   });
 };
 
@@ -38,13 +41,14 @@ export function activate(context: vscode.ExtensionContext) {
     vscode.commands.registerCommand(
       'ignite-code-extension.helloWorld',
       async () => {
-        // The code you place here will be executed every time your command is executed
-        // Display a message box to the user
-        vscode.window.showInformationMessage(
-          'Hello World from ignite-code-extension!'
-        );
+        const userInput = await vscode.window.showInputBox({
+          placeHolder: 'Enter your text here...',
+        });
+        if (!userInput) {
+          return;
+        }
         try {
-          await replaceTextAtCursor('hello world');
+          await replaceTextAtCursor(userInput);
         } catch (e) {
           console.log(e);
         }
