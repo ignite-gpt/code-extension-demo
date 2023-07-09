@@ -6,13 +6,29 @@ const helloWorld = async () => {
   console.log('helloWorld');
 };
 
+const replaceTextAtCursor = async (text: string) => {
+  const editor = vscode.window.activeTextEditor;
+  if (!editor) {
+    return;
+  }
+
+  editor.edit((editBuilder) => {
+    const cursor = editor.selection.active;
+    if (!cursor) {
+      return;
+    }
+
+    editBuilder.replace(editor.selection.active, text);
+  });
+};
+
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
   // Use the console to output diagnostic information (console.log) and errors (console.error)
   // This line of code will only be executed once when your extension is activated
   console.log(
-    'Congratulations, your extension "ignite-code-extension" is now active!',
+    'Congratulations, your extension "ignite-code-extension" is now active!'
   );
 
   let subscriptions = [
@@ -25,14 +41,14 @@ export function activate(context: vscode.ExtensionContext) {
         // The code you place here will be executed every time your command is executed
         // Display a message box to the user
         vscode.window.showInformationMessage(
-          'Hello World from ignite-code-extension!',
+          'Hello World from ignite-code-extension!'
         );
         try {
-          await helloWorld();
+          await replaceTextAtCursor('hello world');
         } catch (e) {
           console.log(e);
         }
-      },
+      }
     ),
 
     vscode.window.onDidChangeActiveTextEditor((e) => {
