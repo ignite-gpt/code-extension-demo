@@ -1,10 +1,25 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
+import { Configuration, OpenAIApi } from 'openai';
+import * as dotenv from 'dotenv';
 
-const helloWorld = async () => {
-  console.log('helloWorld');
-};
+const configuration = new Configuration({
+  // TODO: Hardcode you OpenAI API key here
+  apiKey: process.env.OPENAI_API_KEY,
+});
+
+const openaiAPI = new OpenAIApi(configuration);
+
+async function askGpt(prompt: string) {
+  const chatCompletion = await openaiAPI.createChatCompletion({
+    model: 'gpt-4',
+    messages: [{ role: 'user', content: prompt }],
+  });
+  console.log(chatCompletion);
+
+  return chatCompletion.data.choices[0].message?.content;
+}
 
 const replaceTextAtCursor = async (text: string) => {
   const editor = vscode.window.activeTextEditor;
@@ -47,8 +62,14 @@ export function activate(context: vscode.ExtensionContext) {
         if (!userInput) {
           return;
         }
+        let response;
         try {
-          await replaceTextAtCursor(userInput);
+          response = await askGpt(userInput);
+        } catch (e) {
+          console.log(e);
+        }
+        try {
+          await replaceTextAtCursor(response ?? '');
         } catch (e) {
           console.log(e);
         }
