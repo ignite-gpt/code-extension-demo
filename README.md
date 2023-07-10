@@ -7,7 +7,6 @@ This extension uses [React](https://reactjs.org/) + [Create React App](https://c
 For a deeper dive into how this works, read the guides below.
 
 - [Extension structure](./docs/extension-structure.md)
-- [Extension commands](./docs/extension-commands.md)
 - [Extension development cycle](./docs/extension-development-cycle.md)
 
 ## Getting started
@@ -27,6 +26,17 @@ Once the sample is open inside VS Code you can run the extension by doing the fo
 
 1. Press `F5` to open a new Extension Development Host window
 2. Inside the host window, open the command palette (`Ctrl+Shift+P` or `Cmd+Shift+P`) and type `Ignite GPT: Show`
+
+# Extension commands
+
+A quick run down of some of the important commands that can be run when at the root of the project.
+
+```
+npm run install:all      Install package dependencies for both the extension and React webview source code.
+npm run start:webview    Runs the React webview source code in development mode. Open http://localhost:3000 to view it in the browser.
+npm run build:webview    Build React webview source code. Must be executed before compiling or running the extension.
+npm run compile          Compile VS Code extension
+```
 
 # Contributing
 
