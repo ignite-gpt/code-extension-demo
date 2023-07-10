@@ -8,6 +8,7 @@
     "vscode": "^1.80.0"
   },
   "main": "./out/extension.js",
+  "activationEvents": [],
   "contributes": {
     "commands": [
       {
@@ -29,7 +30,9 @@
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
     "pretest": "npm run compile && npm run lint",
-    "lint": "eslint src --ext ts"
+    "lint": "eslint src --ext ts",
+    "package": "vsce package",
+    "install:extension": "code --install-extension ignite-code-extension-0.0.1.vsix"
   },
   "devDependencies": {
     "@types/glob": "^7.1.3",
@@ -37,6 +40,7 @@
     "@types/vscode": "^1.46.0",
     "@typescript-eslint/eslint-plugin": "^4.14.1",
     "@typescript-eslint/parser": "^4.14.1",
+    "@vscode/vsce": "^2.19.0",
     "eslint": "^7.19.0",
     "glob": "^7.1.6",
     "prettier": "^2.2.1",
