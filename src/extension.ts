@@ -43,13 +43,13 @@ const replaceTextAtCursor = async (text: string) => {
 export function activate(context: vscode.ExtensionContext) {
   console.log('The extension "ignite-code-extension" has been activated.')
 
-  const showHelloWorldCommand = vscode.commands.registerCommand(
-    'hello-world.showHelloWorld',
+  const showCommand = vscode.commands.registerCommand(
+    'ignite-code-extension.show',
     () => {
       HelloWorldPanel.render(context.extensionUri)
     }
   )
-  context.subscriptions.push(showHelloWorldCommand)
+  context.subscriptions.push(showCommand)
 
   let subscriptions = [
     // The command has been defined in the package.json file

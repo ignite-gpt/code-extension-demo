@@ -12,7 +12,11 @@
     "commands": [
       {
         "command": "ignite-code-extension.helloWorld",
-        "title": "Ignite Hello World"
+        "title": "Ignite GPT: Hello world"
+      },
+      {
+        "command": "ignite-code-extension.show",
+        "title": "Ignite GPT: Show"
       }
     ]
   },
