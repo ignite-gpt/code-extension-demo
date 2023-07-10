@@ -86,13 +86,13 @@ export function activate(context: vscode.ExtensionContext) {
       console.log('onDidChangeTextEditorSelection', e)
     }),
 
-    vscode.window.onDidChangeActiveNotebookEditor((e) => {
-      console.log('onDidChangeActiveNotebookEditor', e)
-    }),
+    // vscode.window.onDidChangeActiveNotebookEditor((e) => {
+    //   console.log('onDidChangeActiveNotebookEditor', e)
+    // }),
 
-    vscode.window.onDidChangeNotebookEditorSelection((e) => {
-      console.log('onDidChangeNotebookEditorSelection', e)
-    }),
+    // vscode.window.onDidChangeNotebookEditorSelection((e) => {
+    //   console.log('onDidChangeNotebookEditorSelection', e)
+    // }),
 
     vscode.window.onDidChangeWindowState((e) => {
       console.log('onDidChangeWindowState', e)
