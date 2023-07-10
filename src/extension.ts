@@ -1,8 +1,6 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 import { Configuration, OpenAIApi } from 'openai';
-import * as dotenv from 'dotenv';
+import { HelloWorldPanel } from './panels/HelloWorldPanel';
 
 const configuration = new Configuration({
   // TODO: Hardcode you OpenAI API key here
@@ -43,11 +41,15 @@ const replaceTextAtCursor = async (text: string) => {
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
-  // Use the console to output diagnostic information (console.log) and errors (console.error)
-  // This line of code will only be executed once when your extension is activated
-  console.log(
-    'Congratulations, your extension "ignite-code-extension" is now active!'
+  console.log('The extension "ignite-code-extension" has been activated.');
+
+  const showHelloWorldCommand = vscode.commands.registerCommand(
+    'hello-world.showHelloWorld',
+    () => {
+      HelloWorldPanel.render(context.extensionUri);
+    }
   );
+  context.subscriptions.push(showHelloWorldCommand);
 
   let subscriptions = [
     // The command has been defined in the package.json file
